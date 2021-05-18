@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+*{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently */
+}
+
 
 body{
   border: 0;
@@ -34,6 +43,7 @@ body{
   opacity: 0.25;
   z-index: -99;
   pointer-events: none;
+  box-shadow: inset 0px 0px 10000px 50px #000000;
 }
 .background-hvr{
   height: 100%;
@@ -70,7 +80,7 @@ body{
   border: none;
   outline: none;
   background-color: white;
-  padding-right: 20px;
+  padding-right: 14px;
   cursor:pointer;
 }  
 #wrapper{
