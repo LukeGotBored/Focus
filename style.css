@@ -43,7 +43,7 @@ body{
   opacity: 0.25;
   z-index: -99;
   pointer-events: none;
-  box-shadow: inset 0px 0px 10000px 50px #000000;
+  box-shadow: inset 0px 0px 1000px 200px black;
 }
 .background-hvr{
   height: 100%;
@@ -91,13 +91,13 @@ body{
 }
 #clock{
   color: white;
-  font-size: 6vw;
+  font-size: 100px;
   font-weight: 600;
   line-height: 0;
 }
 #date{
   color: white;
-  font-size: 1.5vw;
+  font-size: 25px;
   font-weight: 400;
   padding-bottom: 50px;
 }
