@@ -64,7 +64,7 @@ $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"10px\" width=
 if(!matched){
     // if light mode is enabled, change the loading color to flashba- sorry, I meant white (also what is wrong with you?)
     $(".loading").css("background-color","#F9F9F9")
-    $(body).css("background-color", "#F9F9F9")
+    $(document).css("background-color", "#F9F9F9")
 } else {
     // dark mode by default, because why not :>
     $(".loading").css("background-color","#3B3B3B")

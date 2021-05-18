@@ -143,7 +143,7 @@ blink{animation: blink 1s infinite;}
   transform: scale(1.05);
   z-index: 100;
   animation: fadeout 1s forwards;
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
   pointer-events: none;
 }
 
