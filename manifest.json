@@ -2,7 +2,7 @@
     "name": "Focus",
     "description": "a tab to help you keep focussing!",
     "version": "0.01",
-    "permissions" : ["management", "tabs", "https://*/*", "http://*/*"],
+    "permissions" : ["management", "tabs"],
     "chrome_url_overrides" : {
         "newtab": "newtab.html"
     },
