@@ -54,27 +54,15 @@ $("#seOpt").on('change', function(){
     ls.setItem("searchEngine", document.getElementById('seOpt').selectedIndex)
 })
 
-$("#12").on('change', function(){   
+
+$('input:radio[name=clock]').on('change', function() {
+    console.log("clock changed!")
     ls.setItem("clock", document.querySelector('input[name="clock"]:checked').value)
 })
 
-$("#24").on('change', function(){   
-    ls.setItem("clock", document.querySelector('input[name="clock"]:checked').value)
-})
-
-$("#dark").on('change', function(){   
+$('input:radio[name=theme]').on('change',function () {
+    console.log("theme changed!")
     ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
-    console.log(ls.getItem("theme"))
-})
-
-$("#light").on('change', function(){   
-    ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
-    console.log(ls.getItem("theme"))
-})
-
-$("#auto").on('change', function(){   
-    ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
-    console.log(ls.getItem("theme"))
 })
 
 
