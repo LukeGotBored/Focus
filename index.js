@@ -1,3 +1,84 @@
+var ls = window.localStorage;
+if(ls.getItem('firstSetup') == null){
+    console.log("Welcome!")
+    ls.setItem("firstSetup",true)
+    ls.setItem("blur",true);
+    ls.setItem("zoom",true);
+    ls.setItem("searchEngine",0)
+    ls.setItem("clock", 0) // 0 - 24 | 1 - 12
+    ls.setItem("theme", 2) // 0 - dark | 1 - light | 2 - auto
+    // should probably execute some welcome sequence
+}
+
+var blur = JSON.parse(ls.getItem('blur'))
+var zoom = JSON.parse(ls.getItem('zoom'))  
+
+// Set all the options on the settings screen to the actual ones
+document.getElementById('blurOpt').checked = blur
+document.getElementById('zoomOpt').checked = zoom
+document.getElementById('seOpt').selectedIndex = ls.getItem('searchEngine')
+
+
+// Clock
+if(ls.getItem("clock") == 0){
+    document.getElementById('24').checked = true
+} else {
+    document.getElementById('12').checked = true
+}
+
+
+//Theme
+if(ls.getItem("theme") == 0) {
+        document.getElementById('dark').checked = true
+    } else if (ls.getItem("theme") == 1) {
+        document.getElementById('light').checked = true
+    } else {
+    document.getElementById('auto').checked = true
+}
+
+
+
+
+$("#blurOpt").on('change', function(){   
+    console.log("changed Blur!")
+    ls.setItem("blur", document.getElementById('blurOpt').checked)
+})
+
+$("#zoomOpt").on('change', function(){   
+    console.log("changed Zoom!")
+    ls.setItem("zoom", document.getElementById('zoomOpt').checked)
+})
+
+$("#seOpt").on('change', function(){   
+    console.log("changed se!")
+    ls.setItem("searchEngine", document.getElementById('seOpt').selectedIndex)
+})
+
+$("#12").on('change', function(){   
+    ls.setItem("clock", document.querySelector('input[name="clock"]:checked').value)
+})
+
+$("#24").on('change', function(){   
+    ls.setItem("clock", document.querySelector('input[name="clock"]:checked').value)
+})
+
+$("#dark").on('change', function(){   
+    ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
+    console.log(ls.getItem("theme"))
+})
+
+$("#light").on('change', function(){   
+    ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
+    console.log(ls.getItem("theme"))
+})
+
+$("#auto").on('change', function(){   
+    ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
+    console.log(ls.getItem("theme"))
+})
+
+
+
 // check if the os color scheme is dark (dark mode)
 let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -40,6 +121,7 @@ function TickLoop() {
     
     setTimeout(TickLoop, 1000);
 }
+
 TickLoop()
 
 $('input[type="text"]').on('focus', function() {
@@ -58,8 +140,7 @@ var randomBg = defaultPictures[Math.random() * defaultPictures.length | 0]
 var bgimage = new Image();      
 bgimage.src="./assets/wallpapers/default/" + randomBg[0] + ".jpg"; 
 
-$(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"10px\" width=\"10px\"></img>" + " " + randomBg[1])     
-
+$(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + randomBg[1])     
 
 if(!matched){
     // if light mode is enabled, change the loading color to flashba- sorry, I meant white (also what is wrong with you?)
@@ -71,8 +152,21 @@ if(!matched){
     $(document).css("background-color", "#3B3B3B")
 }
 
+
+$('#settings').on('click', function(){
+    $('#modal').toggleClass('modalClosed').toggleClass('modalOpen');
+})
+
+
+$(document).on('click', function(e) {
+    if (e.target.id === "bg" && $('#modal').attr("class") == "modalOpen") {
+        $('#modal').toggleClass('modalClosed').toggleClass('modalOpen');
+    }
+})
+
 $(document).ready(function() {
     $(bgimage).on('load', function(){   
         $(".background").css("background-image","url("+$(this).attr("src")+")").show()
-    })  
+    })
+    
 });

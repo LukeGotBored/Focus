@@ -17,13 +17,60 @@
     <div id="bg" class="background" style="display:none;"></div>
     <div class="overlay"></div>
     <div class="loading"></div>
+    <div class="modalClosed" id="modal">
+      <span style="font-size: 40px; font-weight: 700;">Focus</span>
+      <span>v0.0.1 Dev</span>
+      <hr style="margin:1.2px">
+      <br>
+      <br>
+      <!-- Blur -->
+      <input type="checkbox" name="blur" id="blurOpt"> Enable <b>blur</b> on search
+      <br>
+      <!-- Blur -->
+      <input type="checkbox" name="zoom" id="zoomOpt"> Enable <b>zoom</b> on search
+      <br>
+      <br>
+      <!-- Search engine -->
+      Search Engine:
+      <br>
+      <select name="select" id="seOpt">
+        <option value="0">Google</option>
+        <option value="1">DuckDuckGo</option>
+        <option value="2">Bing</option>
+        <option value="3">Yahoo</option>
+      </select>
+      <br>
+      <br>
+      <!-- Unused -->
+      Wallpaper Source:
+      <br>
+      <input type="radio" value="local" name="wp" id="" checked=true> Local
+      <input type="radio" value="custom" name="wp" id="" disabled> Custom
+      <br>
+      <!-- Clock format -->
+      Clock Format:
+      <br>
+      <input type="radio" value="1" name="clock" id="12" class="clock"> 12 hours
+      <input type="radio" value="0" name="clock" id="24" class="clock"> 24 hours
+      <br>
+      <!-- Theme -->
+      Theme:
+      <br>
+      <input type="radio" name="theme" id="dark" value="0"> Dark
+      <input type="radio" name="theme" id="light" value="1"> Light
+      <input type="radio" name="theme" id="auto" value="2"> Set by Browser
+      <br>
+      <br>
+      Made by <a href="https://twitter.com/LukeGotBored">@LukeGotBored</a>
+      <br>
+    </div>
     <div class="credits"></div>
-    <div id="distracted">don't get distracted!</div>
+    <div id="distracted"><button class="settings" id="settings"><div class="material-icons" id="icon" style="vertical-align: middle;">settings</div></button></div>
     <div id=wrapper>
     
       <!-- this thing must be changed, it's using html4 elements (center) -->
     <center><span class="clock" id="clock"><span id="hours"></span><blink class="blink">:</blink><span id="minutes"></span><br><span id="date"><br></center>
-    <form id="formbox" method="get" action="http://www.google.com/search" onsubmit="event.preventDefault(); validateForm();"><div id="searchbox"><input required id="search" class="search-qry" type="text" name="query" id="searchbox" placeholder="Search..." autocomplete="off"><button onclick="browse()" id="button"><span class="material-icons">search</span></button></div></form>
+    <form id="formbox" method="get" action="http://www.google.com/search""><div id="searchbox"><input required id="search" class="search-qry" type="text" name="query" id="searchbox" placeholder="Search..." autocomplete="off"><button onclick="browse()" id="button"><span class="material-icons">search</span></button></div></form>
     <br>
     </div>
 
