@@ -1,21 +1,20 @@
 var ls = window.localStorage;
 if(ls.getItem('firstSetup') == null){
     console.log("Welcome!")
+    
     ls.setItem("firstSetup",true)
-    ls.setItem("blur",true);
-    ls.setItem("zoom",true);
+    ls.setItem("effects",true);
     ls.setItem("searchEngine",0)
     ls.setItem("clock", 0) // 0 - 24 | 1 - 12
     ls.setItem("theme", 2) // 0 - dark | 1 - light | 2 - auto
+    newToast("👋 Welcome to Focus!")
     // should probably execute some welcome sequence
 }
 
-var blur = JSON.parse(ls.getItem('blur'))
-var zoom = JSON.parse(ls.getItem('zoom'))  
+var effects = JSON.parse(ls.getItem('effects'))
 
 // Set all the options on the settings screen to the actual ones
-document.getElementById('blurOpt').checked = blur
-document.getElementById('zoomOpt').checked = zoom
+document.getElementById('fxOpt').checked = effects
 document.getElementById('seOpt').selectedIndex = ls.getItem('searchEngine')
 
 
@@ -27,27 +26,34 @@ if(ls.getItem("clock") == 0){
 }
 
 
-//Theme
-if(ls.getItem("theme") == 0) {
-        document.getElementById('dark').checked = true
-    } else if (ls.getItem("theme") == 1) {
-        document.getElementById('light').checked = true
-    } else {
-    document.getElementById('auto').checked = true
-}
+
+$("#reset").on("click", function(){
+    if(window.confirm("Are you sure you want to reset all data?")){
+        localStorage.clear()
+        location.reload()
+    }
+})
 
 
-
-
-$("#blurOpt").on('change', function(){   
+$("#fxOpt").on('change', function(){   
     console.log("changed Blur!")
-    ls.setItem("blur", document.getElementById('blurOpt').checked)
+    ls.setItem("effects", document.getElementById('fxOpt').checked)
+    var effects = JSON.parse(ls.getItem('effects'))
+    console.log("effects")
 })
 
-$("#zoomOpt").on('change', function(){   
-    console.log("changed Zoom!")
-    ls.setItem("zoom", document.getElementById('zoomOpt').checked)
-})
+$('input[type="text"]').on('focus', function() {
+    var effects = JSON.parse(ls.getItem('effects'))
+    console.log("effects: " + effects)
+    if(effects){
+        document.getElementById("bg").className = "background-hvr"
+    }
+});
+
+$('input[type="text"]').on('focusout', function() {
+    document.getElementById("bg").className = "background"
+});
+
 
 $("#seOpt").on('change', function(){   
     console.log("changed se!")
@@ -63,12 +69,23 @@ $('input:radio[name=clock]').on('change', function() {
 $('input:radio[name=theme]').on('change',function () {
     console.log("theme changed!")
     ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
+    newToast("⚙️ Reload to apply!")
 })
 
-
-
-// check if the os color scheme is dark (dark mode)
 let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if(ls.getItem("theme") == 0) {
+        document.getElementById('dark').checked = true
+        matched = true;
+    } else if (ls.getItem("theme") == 1) {
+        document.getElementById('light').checked = true
+        matched = false;
+    } else {
+    document.getElementById('auto').checked = true
+    matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+console.log(matched)
+// check if the os color scheme is dark (dark mode)
+
 
 // photo metadata and stuff
 let defaultPictures = [ 
@@ -102,27 +119,50 @@ function TickLoop() {
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     var fulldate = monthNames[today.getMonth()] + " " +  getOrdinalNum(today.getDate()) + ", " + today.getFullYear()
     
-    document.title = "New Tab | " + hours + ":" + minutes;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("date").innerText = fulldate
+
+    if(localStorage.getItem("clock") == 0){
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+    } else {
+        if(hours <= 12){
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes + " PM";
+        } else {
+            document.getElementById("hours").innerText = (hours - 12);
+            document.getElementById("minutes").innerText = minutes + " AM";
+        }
+    }
     
-    setTimeout(TickLoop, 1000);
+    document.title = "New Tab"
+    document.getElementById("date").innerText = fulldate 
+    setTimeout(TickLoop, 100);
 }
 
 TickLoop()
 
-$('input[type="text"]').on('focus', function() {
-    document.getElementById("bg").className = "background-hvr"
-});
+  
 
-$('input[type="text"]').on('focusout', function() {
-    document.getElementById("bg").className = "background"
-});
+
+if(!matched){
+    // if light mode is enabled, change the loading color to flashba- sorry, I meant white (also what is wrong with you?)
+    $(".loading").css("background-color","#F9F9F9")
+    $(document).css("background-color", "#F9F9F9")
+    $(".atoast").css("background-color","#F9F9F9")
+    $(".atoast").css("color","#1f1f1f")
+    
+} else {
+    // dark mode by default, because why not :>
+    $(".loading").css("background-color","#3B3B3B")
+    $(document).css("background-color", "#3B3B3B")
+    $(".atoast").css("background-color","#3B3B3B")
+    $(".atoast").css("color","#F9F9F9")
+}
+
 
 document.onkeypress = function (e) {
     document.getElementById("search").focus();
 }
+
 
 var randomBg = defaultPictures[Math.random() * defaultPictures.length | 0]
 var bgimage = new Image();      
@@ -130,15 +170,6 @@ bgimage.src="./assets/wallpapers/default/" + randomBg[0] + ".jpg";
 
 $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + randomBg[1])     
 
-if(!matched){
-    // if light mode is enabled, change the loading color to flashba- sorry, I meant white (also what is wrong with you?)
-    $(".loading").css("background-color","#F9F9F9")
-    $(document).css("background-color", "#F9F9F9")
-} else {
-    // dark mode by default, because why not :>
-    $(".loading").css("background-color","#3B3B3B")
-    $(document).css("background-color", "#3B3B3B")
-}
 
 
 $('#settings').on('click', function(){
@@ -156,5 +187,15 @@ $(document).ready(function() {
     $(bgimage).on('load', function(){   
         $(".background").css("background-image","url("+$(this).attr("src")+")").show()
     })
-    
 });
+
+function newToast(text){
+    var x = document.getElementById("toast");
+    if(x.className == "show"){
+        console.error("Unable to create another toast")
+        return false
+    }
+    x.innerText = text
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3900);
+}

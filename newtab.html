@@ -17,17 +17,14 @@
     <div id="bg" class="background" style="display:none;"></div>
     <div class="overlay"></div>
     <div class="loading"></div>
+    <div id="toast" class="atoast"></div>
     <div class="modalClosed" id="modal">
       <span style="font-size: 40px; font-weight: 700;">Focus</span>
-      <span>v0.0.1 Dev</span>
+      <span>v0.0.2 Dev</span>
       <hr style="margin:1.2px">
       <br>
-      <br>
       <!-- Blur -->
-      <input type="checkbox" name="blur" id="blurOpt"> Enable <b>blur</b> on search
-      <br>
-      <!-- Blur -->
-      <input type="checkbox" name="zoom" id="zoomOpt"> Enable <b>zoom</b> on search
+      <input type="checkbox" name="effects" id="fxOpt"> Enable <b>Visual Effects</b>
       <br>
       <br>
       <!-- Search engine -->
@@ -61,6 +58,8 @@
       <input type="radio" name="theme" id="auto" value="2"> Set by Browser
       <br>
       <br>
+      <button id="reset" style="background-color: white; border-radius: 5px; color: #616161; border-color: #616161; position: absolute; right: 20px; top: 23px;"><span class="material-icons">restart_alt</span></button>
+      <br>
       Made by <a href="https://twitter.com/LukeGotBored">@LukeGotBored</a>
       <br>
     </div>
@@ -72,7 +71,7 @@
     <center>
       <span class="clock" id="clock">
         <span id="hours"></span><blink class="blink">:</blink><span id="minutes"></span><br><span id="date"><br></span></center>
-    <form id="formbox" method="get" action="http://www.google.com/search""><div id="searchbox"><input required id="search" class="search-qry" type="text" name="query" id="searchbox" placeholder="Search..." autocomplete="off"><button onclick="browse()" id="button"><span class="material-icons">search</span></button></div></form>
+    <form id="formbox" method="get" action="http://www.google.com/search""><div id="searchbox"><input required id="search" class="search-qry" type="text" name="query" id="searchbox" placeholder="Search..." autocomplete="off"><button id="button"><span class="material-icons">search</span></button></div></form>
     <br>
     </div>
 

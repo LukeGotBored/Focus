@@ -30,10 +30,10 @@ body{
   transition: 0.5s;
   transform: scale(1.05);
   background-image: linear-gradient(to bottom ,#1f1f1f,#424242);
-  opacity: 0.20;
+  opacity: 0.4;
   z-index: -99;
   pointer-events: none;
-  box-shadow: inset 0px -62px 50px 40px black;
+  /* box-shadow: inset 0px -62px 50px 40px black; */
 }
 .background-hvr{
   height: 100%;
@@ -100,11 +100,9 @@ body{
 }
 .credits{
   position: fixed;
-  bottom: -96%;
+  bottom: 1%;
   left: 15px;
-  font-size: 13px;
-  width: 50%;
-  height: 99%;
+  font-size: 13px;  
   color: white;
   text-align: left;
   opacity: 0.4;
@@ -235,6 +233,56 @@ blink{animation: blink 1s infinite;}
   transform: rotate(180deg);
 }
 
+#toast{
+  padding: 15px;
+  background-color: #1f1f1f;
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  pointer-events: none;
+  text-align: center;
+  visibility: hidden;
+  min-width: 250px; 
+  margin-left: -125px; 
+  text-align: center; /* Centered text */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  right: 15px;
+  top: 15px;
+}
+
+#toast.show{
+  animation: toastIn 1s, toastOut 1s 3s;
+  visibility: visible;
+}
+
+@keyframes toastIn{
+  0%{
+    opacity: 0;
+    top: 0px;
+    right: 15px;
+    display: inline;
+  }
+  100%{
+    opacity: 1;
+    top: 15px;
+    right: 15px;
+    display: none;
+  }
+}
+
+@keyframes toastOut{
+  0%{
+    opacity: 1;
+    top: 15px;
+    right: 15px;
+  }
+  100%{
+    opacity: 0;
+    top: 60px;
+    right: 15px;
+  }
+}
 
 /* error shake animation */
 .shake-horizontal{-webkit-animation:shake-horizontal 1.1s cubic-bezier(.445,.05,.55,.95) both;animation:shake-horizontal 1.1s cubic-bezier(.445,.05,.55,.95) both}
