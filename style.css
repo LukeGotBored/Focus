@@ -8,6 +8,7 @@ body{
   font-family: 'Poppins', sans-serif;
   background-color: #3B3B3B;
 }
+
 .background{
   height: 100%;
   width: 100%;
@@ -20,6 +21,7 @@ body{
   transform: scale(1.05);
   z-index: -100;
 }
+
 .overlay {
   height: 100%;
   width: 100%;
@@ -35,6 +37,7 @@ body{
   pointer-events: none;
   box-shadow: inset 0px -62px 50px 40px black;
 }
+
 .background-hvr{
   height: 100%;
   width: 100%;
@@ -47,6 +50,7 @@ body{
   transform: scale(1.25);
   z-index: -100;
 }
+
 .search-qry{
   color: inherit;
   padding: 15px 10px;
@@ -60,6 +64,7 @@ body{
   background-color: white;
   padding-left: 20px;
 }
+
 #button{
   color: inherit;
   padding: 5px 10px;
@@ -73,44 +78,50 @@ body{
   padding-right: 14px;
   cursor:pointer;
 }  
+
 #wrapper{
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
+
 #clock{
   color: white;
   font-size: 100px;
   font-weight: 600;
   line-height: 0;
-  user-select: none; /* Non-prefixed version, currently */
+  user-select: none; 
 }
+
 #date{
   color: white;
   font-size: 25px;
   font-weight: 400;
   padding-bottom: 50px;
-  user-select: none; /* Non-prefixed version, currently */
+  user-select: none; 
 }
+
 #searchbox{
   display: flex;
   padding-top: 30px;
-  user-select: none; /* Non-prefixed version, currently */
+  user-select: none; 
 }
+
 .credits{
-  position: fixed;
-  bottom: -96%;
+  position: absolute;
+  bottom: 1%;
   left: 15px;
   font-size: 13px;
   width: 50%;
-  height: 99%;
   color: white;
   text-align: left;
   opacity: 0.4;
   transition: 0.6s;
 }
 
+/* i definitely need to find a better way of doing this */
 .modalClosed{
   bottom: 30px;
   opacity: 0;
@@ -144,8 +155,6 @@ body{
   opacity: 1;
 }
 
-
-
 .credits:hover{
   opacity: 1;
 }
@@ -171,16 +180,14 @@ blink{animation: blink 1s infinite;}
 }
 
 #distracted{
-  position: fixed;
+  position: absolute;
   float: right;
-  bottom: -96%;
+  bottom: 1%;
   right: 10px;
   width: auto;
-  height: 100%;
   color: white;
   text-align: right;
   z-index: 0;
-  
 }
 
 #distracted div{

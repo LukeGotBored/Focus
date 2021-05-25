@@ -2,20 +2,17 @@ var ls = window.localStorage;
 if(ls.getItem('firstSetup') == null){
     console.log("Welcome!")
     ls.setItem("firstSetup",true)
-    ls.setItem("blur",true);
-    ls.setItem("zoom",true);
+    ls.setItem("effects",true);
     ls.setItem("searchEngine",0)
     ls.setItem("clock", 0) // 0 - 24 | 1 - 12
     ls.setItem("theme", 2) // 0 - dark | 1 - light | 2 - auto
     // should probably execute some welcome sequence
 }
 
-var blur = JSON.parse(ls.getItem('blur'))
-var zoom = JSON.parse(ls.getItem('zoom'))  
+var effects = JSON.parse(ls.getItem('effects'))
 
 // Set all the options on the settings screen to the actual ones
-document.getElementById('blurOpt').checked = blur
-document.getElementById('zoomOpt').checked = zoom
+document.getElementById('blurOpt').checked = effects
 document.getElementById('seOpt').selectedIndex = ls.getItem('searchEngine')
 
 
@@ -40,14 +37,10 @@ if(ls.getItem("theme") == 0) {
 
 
 $("#blurOpt").on('change', function(){   
-    console.log("changed Blur!")
+    console.log("changed Effects!")
     ls.setItem("blur", document.getElementById('blurOpt').checked)
 })
 
-$("#zoomOpt").on('change', function(){   
-    console.log("changed Zoom!")
-    ls.setItem("zoom", document.getElementById('zoomOpt').checked)
-})
 
 $("#seOpt").on('change', function(){   
     console.log("changed se!")
