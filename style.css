@@ -152,7 +152,7 @@ body{
   user-select: none; /* Non-prefixed version, currently */
 }
 
-blink{animation: blink 1s infinite;}
+.blink{animation: blink 1s infinite;}
 
 @keyframes blink {
     0% {opacity: 0}
