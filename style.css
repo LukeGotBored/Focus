@@ -8,6 +8,7 @@ body{
   font-family: 'Poppins', sans-serif;
   background-color: #3B3B3B;
 }
+
 .background{
   height: 100%;
   width: 100%;
@@ -33,8 +34,10 @@ body{
   opacity: 0.4;
   z-index: -99;
   pointer-events: none;
-  /* box-shadow: inset 0px -62px 50px 40px black; */
+  box-shadow: inset 0px -62px 50px 50px black;
 }
+
+
 .background-hvr{
   height: 100%;
   width: 100%;
@@ -287,3 +290,8 @@ body{
 /* error shake animation */
 .shake-horizontal{-webkit-animation:shake-horizontal 1.1s cubic-bezier(.445,.05,.55,.95) both;animation:shake-horizontal 1.1s cubic-bezier(.445,.05,.55,.95) both}
 @-webkit-keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}@keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}
+
+
+#clockTw{
+  font-size: 60px;  
+}

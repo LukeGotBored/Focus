@@ -24,6 +24,7 @@ if(ls.getItem('firstSetup') == null){
     ls.setItem("firstSetup",true)
     ls.setItem("effects",true)
     ls.setItem("blink", true)
+    ls.setItem("focus", false)
 
     ls.setItem("searchEngine",0)
     // 0 - Google
@@ -46,9 +47,11 @@ if(ls.getItem('firstSetup') == null){
 // Set all the options on the settings screen to the actual ones
 var effects = JSON.parse(ls.getItem('effects'))
 var clock = JSON.parse(ls.getItem("blink"))
+var focusOpt = JSON.parse(ls.getItem("focus"))
 
 document.getElementById('fxOpt').checked = effects
 document.getElementById('blinkOpt').checked = clock
+document.getElementById('focusOpt').checked = focusOpt
 document.getElementById('seOpt').selectedIndex = ls.getItem('searchEngine')
 
 // Kinda useless, but why shouldn't i add a reset function? 
@@ -76,6 +79,12 @@ $("#fxOpt").on('change', function(){
 $("#clockOpt").on('change', function(){   
     ls.setItem("clock", document.getElementById('clockOpt').checked)
     var effects = JSON.parse(ls.getItem('clock'))
+})
+
+$("#focusOpt").on('change', function(){   
+    ls.setItem("focus", document.getElementById("focusOpt").checked)
+    var effects = JSON.parse(ls.getItem('focus'))
+    newToast("⚙️ Reload to apply!") 
 })
 
 
@@ -149,11 +158,11 @@ function TickLoop() {
         document.getElementById("minutes").innerText = minutes;
     } else {
         if(hours <= 12){
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes + " PM";
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes + "<span id='clockTw'> PM</span>";
         } else {
             document.getElementById("hours").innerText = (hours - 12);
-            document.getElementById("minutes").innerText = minutes + " AM";
+            document.getElementById("minutes").innerText = minutes + "<span id='clockTw'> AM</span>";
         }
     }
     
@@ -189,6 +198,15 @@ function TickLoop() {
             document.getElementById("search").name = "q"
             document.getElementById("search").placeholder = "Search on Yahoo..."
             break;
+      }
+
+
+      if(focusOpt){
+        $(".credits").html("<b>Focus mode</b> is enabled")     
+        $('link[href="style.css"]').attr('href','focus.css');
+      } else {
+        $('link[href="focus.css"]').attr('href','style.css');     
+        console.log("false lol")
       }
 
 
