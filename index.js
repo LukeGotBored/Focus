@@ -196,7 +196,7 @@ $(document).ready(function() {
         $(".overlay").css("background-image:", "none")
         $(".credits").html("it seems like you're <b>offline</b>")
     } else {
-        $(".background").css("background-image","url('https://source.unsplash.com/1920x1080/daily?landscape,mountains')").show()
+        $(".background").css("background-image","url('https://source.unsplash.com/1920x1080/daily?landscape,mountains,night')").show()
         $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + "Daily photo by <a href='https://unsplash.com'>Unplash</a>")  
     }
     
