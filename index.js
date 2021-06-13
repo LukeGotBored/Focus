@@ -1,78 +1,24 @@
-// photo metadata and stuff
-let defaultPictures = [ 
-    ["aleskrivec",'Photo by <a href="https://unsplash.com/@aleskrivec?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ales Krivec</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["kencheung",'Photo by <a href="https://unsplash.com/@kencheungphoto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ken Cheung</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["baileyzinde",'Photo by <a href="https://unsplash.com/@baileyzindel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bailey Zindel</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["lucabravo",'Photo by <a href="https://unsplash.com/@lucabravo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luca Bravo</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["nickperez",'Photo by <a href="https://unsplash.com/@nipez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nick Perez</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["albertorestifo",'Photo by <a href="https://unsplash.com/@albertorestifo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alberto Restifo</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["benjaminvoros",'Photo by <a href="https://unsplash.com/@vorosbenisop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Benjamin Voros</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["danielacuevas",'Photo by <a href="https://unsplash.com/@danielacuevas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daniela Cuevas</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["jakehills",'Photo by <a href="https://unsplash.com/@jakehills?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jake Hills</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["jasperboer",'Photo by <a href="https://unsplash.com/@jasperboer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jasper Boer</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["max",'Photo by <a href="https://unsplash.com/@notquitemax?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Max</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["nitishmeena",'Photo by <a href="https://unsplash.com/@nitishm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nitish Meena</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["pinewatt",'Photo by <a href="https://unsplash.com/@pinewatt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">pine watt</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["rodrigosoares",'Photo by <a href="https://unsplash.com/@rodi01?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rodrigo Soares</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["samuelferrara",'Photo by <a href="https://unsplash.com/@samferrara?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Samuel Ferrara</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["silasbaisch",'Photo by <a href="https://unsplash.com/@silasbaisch?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Silas Baisch</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["pietrodegrandi", 'Photo by <a href="https://unsplash.com/@peter_mc_greats?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Pietro De Grandi</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["lucamicheli",'Photo by <a href="https://unsplash.com/@lucamicheli?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luca Micheli</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["shannonkunkle",'Photo by <a href="https://unsplash.com/@photoskunk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shannon Kunkle</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["albertorestifo",'Photo by <a href="https://unsplash.com/@albertorestifo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alberto Restifo</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["johannesplenio",'Photo by <a href="https://unsplash.com/@jplenio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Johannes Plenio</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["thaian",'Photo by <a href="https://unsplash.com/@johnn21?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Thái An</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["simonberger",'Photo by <a href="https://unsplash.com/@8moments?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Simon Berger</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["stephenleonardi",'Photo by <a href="https://unsplash.com/@stephenleo1982?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Stephen Leonardi</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["fabianquintero",'Photo by <a href="https://unsplash.com/@onefabian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Fabian Quintero</a> on <a href="https://unsplash.com/s/photos/nature?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["aleskrivec",'Photo by <a href="https://unsplash.com/@aleskrivec?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ales Krivec</a> on <a href="https://unsplash.com/s/photos/mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["mrwong",'Photo by <a href="https://unsplash.com/@mrwong?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">MR WONG</a> on <a href="https://unsplash.com/s/photos/mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'],
-    ["nitishmeena",'Photo by <a href="https://unsplash.com/@nitishm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nitish Meena</a> on <a href="https://unsplash.com/s/photos/mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>']
-]   
-
 //------ Local Storage --------//
 var ls = window.localStorage;
-if(ls.getItem('firstSetup') == null){
-    ls.setItem("firstSetup",true)
-    ls.setItem("effects",true)
-    ls.setItem("blink", true)
-    ls.setItem("focus", false)
-
-    ls.setItem("searchEngine",0)
-    // 0 - Google
-    // 1 - DuckDuckGo
-    // 2 - Bing
-    // 3 - Yahoo
-
-    ls.setItem("clock", 0) 
-    // 0 - 24 
-    // 1 - 12
-    
-    ls.setItem("theme", 2) 
-    // 0 - dark 
-    // 1 - light
-    // 2 - auto
+if(ls.getItem('firstSetup') == null){ // If it's the first boot
+    ls.setItem("firstSetup",true) // Setup happened
+    ls.setItem("effects",true) // Blur and zoom
+    ls.setItem("focus", false) // Focus mode
+    ls.setItem("searchEngine",0) // Search engine
+    ls.setItem("clock", 0) // Clock (24 hrs / 12 hrs)
+    ls.setItem("theme", 2) // Page theme (dark mode / light mode)
     
     newToast("👋 Welcome to Focus!")
 }
 
 // Set all the options on the settings screen to the actual ones
 var effects = JSON.parse(ls.getItem('effects'))
-var clock = JSON.parse(ls.getItem("blink"))
 var focusOpt = JSON.parse(ls.getItem("focus"))
 
 document.getElementById('fxOpt').checked = effects
-document.getElementById('blinkOpt').checked = clock
 document.getElementById('focusOpt').checked = focusOpt
 document.getElementById('seOpt').selectedIndex = ls.getItem('searchEngine')
 
-// Kinda useless, but why shouldn't i add a reset function? 
-$("#reset").on("click", function(){
-    if(window.confirm("You're about to reset Focus, proceed?")){
-        localStorage.clear()
-        location.reload()
-    }
-})
 
 // Set Clock
 if(ls.getItem("clock") == 0){
@@ -103,7 +49,6 @@ $("#focusOpt").on('change', function(){
 // Effects Logic
 $('input[type="text"]').on('focus', function() {
     var effects = JSON.parse(ls.getItem('effects'))
-    console.log("effects: " + effects)
     if(effects){
         document.getElementById("bg").className = "background-hvr"
     }
@@ -113,26 +58,19 @@ $('input[type="text"]').on('focusout', function() {
     document.getElementById("bg").className = "background"
 });
 
-$("#blinkOpt").on("change", function(){
-    ls.setItem("blink", document.getElementById("blinkOpt").checked)
-    newToast("⚙️ Reload to apply!")
-})
 
 // Set Search Engine
 $("#seOpt").on('change', function(){   
-    console.log("changed se!")
     ls.setItem("searchEngine", document.getElementById('seOpt').selectedIndex)
 })
 
 // Get Clock
 $('input:radio[name=clock]').on('change', function() {
-    console.log("clock changed!")
     ls.setItem("clock", document.querySelector('input[name="clock"]:checked').value)
 })
 
 // Get Theme
 $('input:radio[name=theme]').on('change',function () {
-    console.log("theme changed!")
     ls.setItem("theme", document.querySelector('input[name="theme"]:checked').value)
     newToast("⚙️ Reload to apply!")
 })
@@ -174,19 +112,13 @@ function TickLoop() {
             document.getElementById("minutes").innerHTML = minutes + "<span id='clockTw'> PM</span>";
         } else {
             document.getElementById("hours").innerText = (hours - 12);
-            document.getElementById("minutes").innerText = minutes + "<span id='clockTw'> AM</span>";
+            document.getElementById("minutes").innerHTML = minutes + "<span id='clockTw'> AM</span>";
         }
     }
     
     document.title = "New Tab"
     document.getElementById("date").innerText = fulldate 
-    
-    var x = document.getElementById("blinkthing");
-    if(clock){
-        x.className = "blink"
-    } else {
-        x.className = ""
-    }
+
 
     switch(document.getElementById('seOpt').selectedIndex) {
         case 0:
@@ -212,22 +144,10 @@ function TickLoop() {
             break;
       }
 
-
-      if(focusOpt){
-        $(".credits").html("<b>Focus mode</b> is enabled")     
-        $('link[href="style.css"]').attr('href','focus.css');
-      } else {
-        $('link[href="focus.css"]').attr('href','style.css');     
-        console.log("false lol")
-      }
-
-
-    setTimeout(TickLoop, 100);
-}
-
-TickLoop()
-
-  
+      
+      setTimeout(TickLoop, 100);
+    }
+    TickLoop()
 
 
 if(!matched){
@@ -250,13 +170,7 @@ document.onkeypress = function (e) {
     document.getElementById("search").focus();
 }
 
-// get random image and preload it
-var randomBg = defaultPictures[Math.random() * defaultPictures.length | 0]
-var bgimage = new Image();      
-bgimage.src="./assets/wallpapers/default/" + randomBg[0] + ".jpg"; 
-
-// Add credits
-$(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + randomBg[1])     
+   
 
 
 // Open settings
@@ -273,11 +187,26 @@ $(document).on('click', function(e) {
 
 
 // Show preloaded image as background
+
 $(document).ready(function() {
-    $(bgimage).on('load', function(){   
-        $(".background").css("background-image","url("+$(this).attr("src")+")").show()
-    })
-});
+    if(!window.navigator.onLine){
+        $(".background").css("background-image","url('./assets/wallpapers/offline.png')").show()
+        $("#search").hide()
+        $("#button").hide()
+        $(".overlay").css("background-image:", "none")
+        $(".credits").html("it seems like you're <b>offline</b>")
+    } else {
+        $(".background").css("background-image","url('https://source.unsplash.com/1920x1080/daily?landscape,mountains')").show()
+        $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + "Daily photo by <a href='https://unsplash.com'>Unplash</a>")  
+    }
+    
+    if(focusOpt){
+        $(".credits").html("<b>Focus mode</b> is enabled")     
+        $('link[href="style.css"]').attr('href','focus.css');
+      } else {
+        $('link[href="focus.css"]').attr('href','style.css');     
+      }
+})
 
 
 //--------------------- Utils ---------------------------//
@@ -285,7 +214,7 @@ $(document).ready(function() {
 function newToast(text){
     var x = document.getElementById("toast");
     if(x.className == "show"){
-        console.error("Unable to create another toast")
+        console.error("Looks like there's already a toast!")
         return false
     }
     x.innerText = text
@@ -298,5 +227,9 @@ function getOrdinalNum(n) {
     return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
 }
 
-
-// i drank an insane amount of caffeine and i have no idea of what i'm doing, if you find anything to fix/improveme, don't be afraid to do a pull request! 
+$("#reset").on("click", function(){
+    if(window.confirm("You're about to reset Focus, proceed?")){
+        localStorage.clear()
+        location.reload()
+    }
+})

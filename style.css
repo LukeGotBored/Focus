@@ -34,7 +34,7 @@ body{
   opacity: 0.4;
   z-index: -99;
   pointer-events: none;
-  box-shadow: inset 0px -62px 50px 50px black;
+  /* box-shadow: inset 0px -62px 50px 50px black; */
 }
 
 
