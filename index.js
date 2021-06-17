@@ -224,7 +224,7 @@ console.log(
     "%cHold on!",
     "color:red;font-family:system-ui;font-size:3rem;-webkit-text-stroke: 1px black;font-weight:bold"
   );
-console.log("%cif you REALLY want to see the source code check out the GitHub repo:", "color:white;font-family:system-ui;font-size:0.8rem;")
+console.log("%cif you want to see the source code check out the GitHub repo:", "color:white;font-family:system-ui;font-size:0.8rem;")
 console.log("https://github.com/LukeGotBored/Focus")
 //--------------------- Utils ---------------------------//
 
