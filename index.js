@@ -96,7 +96,7 @@ if(ls.getItem("theme") == 0) {
 
 function TickLoop() {
     var today = new Date();
-    var hours = today.getHours()
+    var hourss = today.getHours()
     var minutes = String(today.getMinutes()).padStart(2, "0");
 
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -104,14 +104,14 @@ function TickLoop() {
     
 
     if(localStorage.getItem("clock") == 0){
-        document.getElementById("hours").innerText = hours;
+        document.getElementById("hours").innerText = hourss;
         document.getElementById("minutes").innerText = minutes;
     } else {
-        if(hours <= 12){
-            document.getElementById("hours").innerHTML = hours;
+        if(hourss <= 12){
+            document.getElementById("hours").innerHTML = hourss;
             document.getElementById("minutes").innerHTML = minutes + "<span id='clockTw'> PM</span>";
         } else {
-            document.getElementById("hours").innerText = (hours - 12);
+            document.getElementById("hours").innerText = (hourss - 12);
             document.getElementById("minutes").innerHTML = minutes + "<span id='clockTw'> AM</span>";
         }
     }
@@ -185,19 +185,31 @@ $(document).on('click', function(e) {
     }
 })
 
-
-// Show preloaded image as background
+// Daily thing
+hourss = new Date().getHours()
+var clockBg;
+if(hourss > 0){
+    clockBg = "noon";
+} else if(hourss > 6){
+    clockBg = "morning";
+} else if(hourss < 12){
+    clockBg = "afternoon";
+} else if(hourss < 20){
+    clockBg = "evening";
+} else {
+    clockBg = "night"
+}
 
 $(document).ready(function() {
-    if(!window.navigator.onLine){
+    if(window.navigator.onLine){
+        $(".background").css("background-image","url('https://source.unsplash.com/1920x1080/daily?landscape,mountains," + clockBg + "')").show()
+        $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + "Daily photo by <a href='https://unsplash.com'>Unplash</a>")  
+    } else {
         $(".background").css("background-image","url('./assets/wallpapers/offline.png')").show()
         $("#search").hide()
         $("#button").hide()
         $(".overlay").css("background-image:", "none")
         $(".credits").html("it seems like you're <b>offline</b>")
-    } else {
-        $(".background").css("background-image","url('https://source.unsplash.com/1920x1080/daily?landscape,mountains,night')").show()
-        $(".credits").html("<img src=\"assets/icons/us_logo.png\" height=\"15px\" width=\"15px\"></img>" + "&nbsp&nbsp" + "Daily photo by <a href='https://unsplash.com'>Unplash</a>")  
     }
     
     if(focusOpt){
@@ -208,13 +220,17 @@ $(document).ready(function() {
       }
 })
 
-
+console.log(
+    "%cHold on!",
+    "color:red;font-family:system-ui;font-size:3rem;-webkit-text-stroke: 1px black;font-weight:bold"
+  );
+console.log("%cif you REALLY want to see the source code check out the GitHub repo:", "color:white;font-family:system-ui;font-size:0.8rem;")
+console.log("https://github.com/LukeGotBored/Focus")
 //--------------------- Utils ---------------------------//
 
 function newToast(text){
     var x = document.getElementById("toast");
     if(x.className == "show"){
-        console.error("Looks like there's already a toast!")
         return false
     }
     x.innerText = text
