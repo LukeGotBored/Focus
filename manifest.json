@@ -1,7 +1,7 @@
 {
     "name": "Focus",
     "description": "a tab to help you keep focussing!",
-    "version": "0.01",
+    "version": "1.0.0.0",
     "permissions" : ["management", "tabs"],
     "chrome_url_overrides" : {
         "newtab": "newtab.html"
