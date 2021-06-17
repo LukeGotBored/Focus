@@ -34,7 +34,7 @@ body{
   opacity: 0.4;
   z-index: -99;
   pointer-events: none;
-  /* box-shadow: inset 0px -62px 50px 50px black; */
+  /* box-shadow: inset 0px 0px 500px 380px rgb(0, 0, 0, 0.3); */
 }
 
 
@@ -108,7 +108,7 @@ body{
   font-size: 13px;  
   color: white;
   text-align: left;
-  opacity: 0.4;
+  opacity: 0.6  ;
   transition: 0.6s;
 }
 
@@ -175,7 +175,7 @@ body{
   position: fixed;
   float: right;
   bottom: -96%;
-  right: 10px;
+  right: 15px;
   width: auto;
   height: 100%;
   color: white;
@@ -230,6 +230,7 @@ body{
   vertical-align: middle;
   user-select: none; /* Non-prefixed version, currently */
   cursor: pointer;
+  padding: 0;
 }
 
 .settings:hover{
