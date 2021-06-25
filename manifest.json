@@ -1,6 +1,6 @@
 {
     "name": "Focus - a better new tab",
-    "description": "Replace your default new tab with a customizable and beautiful tab",
+    "description": "Replace your default tab with a new, customizable and beautiful one",
     "version": "1.1.0",
     "permissions" : ["management", "tabs"],
     "chrome_url_overrides" : {
